@@ -1,7 +1,12 @@
 package spring.di.entity;
 
-public class SubinExam implements Exam {
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component("exam1")
+public class SubinExam implements Exam {
+	
+	@Value("20")
 	private int kor;
 	private int eng;
 	private int math;

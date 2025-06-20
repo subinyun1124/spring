@@ -3,34 +3,34 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   
+	   
+	   <context:component-scan base-package = "spring.di.ui, spring.di.entity" />  패키지 속의 클래스들 읽고 @Component있으면 객체화 안쪽에 있는 autowired 역시 읽음   
+<!--   <context:annotation-config />   객체만드면서 어노테이션 확인해라   -->
 	   <!-- Exam exam = new SubinExam(); -->
-	   <bean id="exam" class="spring.di.entity.NewSubinExam" p:kor="10" p:eng="20" p:math="30" p:com="40" />
-	   		<!--setter 주입 
-			<property name="kor"> 
-	   			<value> 10</value>
-	   		</property>
-	   		<property name="eng" value="20" />
-	   		<property name="math" value="30" />
-	   		<property name="com" value="40" /> --> 
-	   		  		
+<!--	   <bean id= "exam" class="spring.di.entity.SubinExam" p:kor="10" p:eng="20" p:math="30" p:com="40" />-->
+<!--	   <bean id= "exam2" class="spring.di.entity.SubinExam" p:kor="10" p:eng="20" p:math="30" p:com="40" />-->
+	  		
 <!--	   	<bean id="exam" class="spring.di.entity.SubinExam"> -->
 <!--	   	<constructor-arg name="kor" value = "10"/> -->
 <!--	   	<constructor-arg name="eng" value = "10"/> -->
 <!--	   	<constructor-arg name="math" value = "10"/> -->
 <!--	   	<constructor-arg name="com" value = "10"/> -->
 	   		
-	   </bean>
+<!--	   </bean>-->
 	   <!-- ExamConsole console = new InlineExamConsole -->
-	   <bean id="console" class="spring.di.ui.InlineExamConsole" > 
-	   		<!-- console.setExam(exam); -->
-	   		<property name="exam" ref="exam" />
-	   </bean>
+<!--	   <bean id="console" class="spring.di.ui.InlineExamConsole" > -->
+<!-- 			console.setExam(exam); -->
+<!--	   		<property name="exam" ref="exam" />-->
+<!--	   </bean>-->
 	   
-	   <util:list id="exams" list-class="java.util.ArrayList"> <!-- 리스트 객체를 만들 수 있 -->
+<!--	   <util:list id="exams" list-class="java.util.ArrayList">  리스트 객체를 만들 수 있음  
 	   		<bean class="spring.di.entity.SubinExam" p:kor="10" p:eng="20" p:math="30" p:com="40" />
 	   		<ref bean="exam" />
-	   </util:list>
+	   </util:list> -->
 	   
 <!--	   <bean id="exams" class="java.util.ArrayList">-->
 <!--	   		<constructor-arg>-->
