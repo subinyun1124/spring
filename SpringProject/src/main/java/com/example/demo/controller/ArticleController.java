@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.dto.ArticleForm;
+import com.example.demo.entity.Article;
+import com.example.demo.repository.ArticleRepository;
 
 /* 
  * Form데이터 주고받기
@@ -19,6 +22,9 @@ import com.example.demo.dto.ArticleForm;
 @Controller
 public class ArticleController {
 	
+	@Autowired // 스프링 부트가 미리 생성해놓은 객체를 자동 연결 
+	private ArticleRepository articleRepository;
+	
 	@GetMapping("/articles/new")
 	public String mewArticleForm() {
 		return "articles/new";
@@ -27,6 +33,16 @@ public class ArticleController {
 	@PostMapping("/articles/create")
 	public String createArticle(ArticleForm form) {
 		System.out.println(form.toString());
+		
+		//JPA
+		// 1. DTO -> Entity
+		Article article = form.toEntity();
+		System.out.println(article.toString());
+		
+		// 2. Repository에 Entity를 DB안에 저장
+		Article saved = articleRepository.save(article);
+		System.out.println(saved.toString());
+		
 		return "";
 	}
 

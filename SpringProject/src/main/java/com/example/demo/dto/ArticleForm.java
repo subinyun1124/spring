@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.Article;
+
 public class ArticleForm {
 	
 	private String title;
@@ -13,6 +15,11 @@ public class ArticleForm {
 	@Override
 	public String toString() {
 		return "ArticleForm [title=" + title + ", content=" + content + "]";
+	}
+
+	public Article toEntity() {
+		
+		return new Article(null, title, content);
 	}
 	
 
