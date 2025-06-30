@@ -9,6 +9,8 @@ import com.example.demo.dto.ArticleForm;
 import com.example.demo.entity.Article;
 import com.example.demo.repository.ArticleRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 /* 
  * Form데이터 주고받기
  * 1. 뷰 페이지 생성
@@ -20,6 +22,7 @@ import com.example.demo.repository.ArticleRepository;
  */
 
 @Controller
+@Slf4j
 public class ArticleController {
 	
 	@Autowired // 스프링 부트가 미리 생성해놓은 객체를 자동 연결 
@@ -32,16 +35,20 @@ public class ArticleController {
 	
 	@PostMapping("/articles/create")
 	public String createArticle(ArticleForm form) {
-		System.out.println(form.toString());
+		log.info(form.toString());
+		//System.out.println(form.toString()); -> 로깅기능으로 대체 
+		
 		
 		//JPA
 		// 1. DTO -> Entity
 		Article article = form.toEntity();
-		System.out.println(article.toString());
+		log.info(article.toString());
+		//System.out.println(article.toString());
 		
 		// 2. Repository에 Entity를 DB안에 저장
 		Article saved = articleRepository.save(article);
-		System.out.println(saved.toString());
+		log.info(saved.toString());
+		//System.out.println();
 		
 		return "";
 	}
