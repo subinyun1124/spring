@@ -3,10 +3,14 @@ package com.example.subin.spring.service;
 import com.example.subin.spring.domain.Member;
 import com.example.subin.spring.repository.MemberRepository;
 import com.example.subin.spring.repository.MemoryMemberRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
